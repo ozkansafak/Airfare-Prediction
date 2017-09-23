@@ -204,7 +204,7 @@ class Callback_Func(Callback):
         self.wanna_plot = wanna_plot
         
         
-    def plotter(self, title='validation accuracy'):
+    def plotter(self, title='validation mse'):
         ax = plt.subplot(121)
         plt.xlabel('epochs')
         plt.grid('on')
@@ -237,7 +237,7 @@ class Callback_Func(Callback):
         self.acc.append(_acc)
         
         end = time.time()
-        print('\nRuntime: %d min %d sec' % ((end-start)//60, (end-start)%60))
+        print('\nRuntime: %d min %d sec' % ((end-self.start)//60, (end-self.start)%60))
         
         if self.wanna_plot: self.plotter()
         
