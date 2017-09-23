@@ -244,8 +244,7 @@ class Callback_Func(Callback):
 #........................................................
 
 
-
-def return_ROC_statistics(threshold=np.linspace(0,1,51)):
+def return_ROC_statistics(model, X_train, X_cv, X_test, y_test, threshold=np.linspace(0,1,51)):
     y_pred_train = model.predict(X_train, batch_size=1024)[:,0]
     y_pred_cv    = model.predict(X_cv,    batch_size=1024)[:,0]
     y_pred_test  = model.predict(X_test,  batch_size=1024)[:,0]
@@ -262,5 +261,5 @@ def return_ROC_statistics(threshold=np.linspace(0,1,51)):
         pre.append(pre_)
         rec.append(rec_)
         fpr.append(fpr_)
-    return y_pred_train_01, y_pred_cv_01, y_pred_test_01, acc, pre, rec, fpr
+    return y_pred_train, y_pred_cv, y_pred_test, y_pred_train_01, y_pred_cv_01, y_pred_test_01, acc, pre, rec, fpr
 #........................................................
